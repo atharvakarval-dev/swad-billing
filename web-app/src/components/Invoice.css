@@ -1,0 +1,304 @@
+.invoice-container {
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 20px;
+    background: white;
+}
+
+.invoice-sheet {
+    background: white;
+    border: 1px solid #ddd;
+    padding: 40px;
+    min-height: 1100px;
+    /* Approximate A4 height */
+    position: relative;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Header */
+.invoice-header {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid #333;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+}
+
+.brand-name {
+    font-size: 2.5rem;
+    color: #c00;
+    /* Reddish brand color for Swad/Union Bank vibes or standard black */
+    margin: 0 0 10px 0;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.brand-address {
+    font-size: 0.9rem;
+    color: #555;
+    line-height: 1.4;
+}
+
+.invoice-title h2 {
+    font-size: 2rem;
+    color: #333;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 0;
+}
+
+/* Info Section */
+.info-section {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.customer-details,
+.invoice-meta {
+    width: 48%;
+}
+
+.input-group {
+    display: flex;
+    align-items: baseline;
+    margin-bottom: 10px;
+}
+
+.input-group label {
+    font-weight: 600;
+    min-width: 80px;
+    color: #333;
+}
+
+.input-group input,
+.input-group textarea {
+    flex: 1;
+    padding: 5px;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 1rem;
+    background: transparent;
+}
+
+.input-group input:focus,
+.input-group textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    background: #f8f9ff;
+}
+
+/* Table */
+.table-section table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.table-section th {
+    background: #333;
+    color: white;
+    padding: 10px;
+    text-align: left;
+    font-weight: 600;
+}
+
+.table-section td {
+    padding: 8px;
+    border-bottom: 1px solid #eee;
+}
+
+.table-input {
+    width: 100%;
+    border: none;
+    padding: 5px;
+    font-size: 1rem;
+    background: transparent;
+}
+
+.table-input:focus {
+    background: #f0f0f0;
+    outline: none;
+}
+
+.amount-cell {
+    font-weight: 600;
+    text-align: right;
+    padding-right: 15px !important;
+}
+
+.btn-add {
+    width: 100%;
+    padding: 10px;
+    background: #f1f5f9;
+    border: 2px dashed #cbd5e1;
+    color: #64748b;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+.btn-add:hover {
+    background: #e2e8f0;
+    color: #334155;
+    border-color: #94a3b8;
+}
+
+.btn-icon {
+    background: #fee2e2;
+    color: #ef4444;
+    border: none;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    line-height: 1;
+}
+
+/* Footer */
+.footer-section {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    border-top: 2px solid #333;
+    padding-top: 20px;
+}
+
+.bank-details {
+    width: 60%;
+    font-size: 0.9rem;
+}
+
+.bank-details h3 {
+    margin-top: 0;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+}
+
+.bank-grid {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 5px;
+}
+
+.totals {
+    width: 35%;
+    text-align: right;
+}
+
+.total-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.grand-total {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #333;
+    border-top: 1px solid #ddd;
+    padding-top: 10px;
+}
+
+.qr-code-img {
+    width: 100px;
+    height: 100px;
+    margin-top: 10px;
+    object-fit: cover;
+}
+
+/* Controls */
+.controls {
+    margin-bottom: 20px;
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+.btn {
+    padding: 10px 20px;
+    border-radius: 6px;
+    border: none;
+    font-weight: 600;
+    transition: transform 0.1s;
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: white;
+    box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.2);
+}
+
+.btn-secondary {
+    background: var(--surface);
+    color: var(--text-primary);
+    border: 1px solid var(--border);
+}
+
+/* PRINT MEDIA QUERY */
+@media print {
+    @page {
+        margin: 0;
+        size: auto;
+    }
+
+    body {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        background-color: white;
+    }
+
+    .invoice-container {
+        width: 100%;
+        max-width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+
+    .invoice-sheet {
+        border: none;
+        box-shadow: none;
+        padding: 10mm 15mm;
+        /* Reduced padding for better fit */
+        min-height: 0 !important;
+        /* Force override */
+        height: auto !important;
+        margin: 0;
+        width: 100%;
+        overflow: visible;
+    }
+
+    .invoice-sheet input,
+    .invoice-sheet textarea {
+        border: none !important;
+        padding: 0;
+        background: transparent !important;
+        resize: none;
+    }
+
+    .footer-section {
+        page-break-inside: avoid;
+        padding-top: 10px;
+        margin-top: 20px;
+    }
+
+    tr {
+        page-break-inside: avoid;
+        page-break-after: auto;
+    }
+
+    /* Hide placeholders when printing */
+    ::placeholder {
+        color: transparent;
+    }
+}
