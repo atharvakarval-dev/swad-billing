@@ -1,85 +1,231 @@
 .invoice-container {
     max-width: 850px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 0.5rem;
     background: white;
+}
+
+@media (min-width: 640px) {
+    .invoice-container {
+        padding: 1rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .invoice-container {
+        padding: 1.5rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .invoice-container {
+        padding: 20px;
+    }
 }
 
 .invoice-sheet {
     background: white;
     border: 1px solid #ddd;
-    padding: 40px;
-    min-height: 1100px;
-    /* Approximate A4 height */
+    padding: 1rem;
+    min-height: auto;
     position: relative;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+@media (min-width: 640px) {
+    .invoice-sheet {
+        padding: 1.5rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .invoice-sheet {
+        padding: 2rem;
+        min-height: 1100px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .invoice-sheet {
+        padding: 40px;
+    }
 }
 
 /* Header */
 .invoice-header {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    gap: 1rem;
     border-bottom: 2px solid #333;
-    padding-bottom: 20px;
-    margin-bottom: 30px;
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+@media (min-width: 640px) {
+    .invoice-header {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+        padding-bottom: 20px;
+        margin-bottom: 30px;
+    }
 }
 
 .brand-name {
-    font-size: 2.5rem;
+    font-size: 1.5rem;
     color: #c00;
-    /* Reddish brand color for Swad/Union Bank vibes or standard black */
-    margin: 0 0 10px 0;
+    margin: 0 0 8px 0;
     font-weight: 800;
-    letter-spacing: -1px;
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+}
+
+@media (min-width: 640px) {
+    .brand-name {
+        font-size: 2rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .brand-name {
+        font-size: 2.5rem;
+        letter-spacing: -1px;
+    }
 }
 
 .brand-address {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     color: #555;
     line-height: 1.4;
 }
 
+@media (min-width: 640px) {
+    .brand-address {
+        font-size: 0.9rem;
+    }
+}
+
+.brand-logo {
+    max-width: 100px;
+    max-height: 70px;
+    margin-bottom: 8px;
+    display: block;
+    object-fit: contain;
+}
+
+@media (min-width: 640px) {
+    .brand-logo {
+        max-width: 120px;
+        max-height: 85px;
+        margin-bottom: 10px;
+    }
+}
+
+@media (min-width: 768px) {
+    .brand-logo {
+        max-width: 150px;
+        max-height: 100px;
+    }
+}
+
 .invoice-title h2 {
-    font-size: 2rem;
+    font-size: 1.25rem;
     color: #333;
     text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
     margin: 0;
+}
+
+@media (min-width: 640px) {
+    .invoice-title h2 {
+        font-size: 1.5rem;
+        letter-spacing: 2px;
+    }
+}
+
+@media (min-width: 768px) {
+    .invoice-title h2 {
+        font-size: 2rem;
+    }
 }
 
 /* Info Section */
 .info-section {
     display: flex;
-    justify-content: space-between;
-    margin-bottom: 30px;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+@media (min-width: 640px) {
+    .info-section {
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-bottom: 30px;
+    }
 }
 
 .customer-details,
 .invoice-meta {
-    width: 48%;
+    width: 100%;
+}
+
+@media (min-width: 640px) {
+    .customer-details,
+    .invoice-meta {
+        width: 48%;
+    }
 }
 
 .input-group {
     display: flex;
-    align-items: baseline;
-    margin-bottom: 10px;
+    flex-direction: column;
+    gap: 0.25rem;
+    margin-bottom: 0.75rem;
+}
+
+@media (min-width: 640px) {
+    .input-group {
+        flex-direction: row;
+        align-items: baseline;
+        gap: 0;
+        margin-bottom: 10px;
+    }
 }
 
 .input-group label {
     font-weight: 600;
-    min-width: 80px;
+    min-width: auto;
     color: #333;
+    font-size: 0.875rem;
+}
+
+@media (min-width: 640px) {
+    .input-group label {
+        min-width: 80px;
+        font-size: 1rem;
+    }
 }
 
 .input-group input,
 .input-group textarea {
     flex: 1;
-    padding: 5px;
+    padding: 8px;
     border: 1px solid #eee;
     border-radius: 4px;
     font-family: inherit;
-    font-size: 1rem;
+    font-size: 0.9rem;
     background: transparent;
+    width: 100%;
+}
+
+@media (min-width: 640px) {
+    .input-group input,
+    .input-group textarea {
+        padding: 5px;
+        font-size: 1rem;
+    }
 }
 
 .input-group input:focus,
@@ -90,31 +236,75 @@
 }
 
 /* Table */
+.table-section {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 0 -0.5rem;
+    padding: 0 0.5rem;
+}
+
+@media (min-width: 640px) {
+    .table-section {
+        margin: 0;
+        padding: 0;
+    }
+}
+
 .table-section table {
     width: 100%;
+    min-width: 500px;
     border-collapse: collapse;
     margin-bottom: 20px;
+    font-size: 0.875rem;
+}
+
+@media (min-width: 640px) {
+    .table-section table {
+        font-size: 1rem;
+    }
 }
 
 .table-section th {
     background: #333;
     color: white;
-    padding: 10px;
+    padding: 8px 6px;
     text-align: left;
     font-weight: 600;
+    font-size: 0.8rem;
+    white-space: nowrap;
+}
+
+@media (min-width: 640px) {
+    .table-section th {
+        padding: 10px;
+        font-size: 0.9rem;
+    }
 }
 
 .table-section td {
-    padding: 8px;
+    padding: 6px;
     border-bottom: 1px solid #eee;
+}
+
+@media (min-width: 640px) {
+    .table-section td {
+        padding: 8px;
+    }
 }
 
 .table-input {
     width: 100%;
     border: none;
-    padding: 5px;
-    font-size: 1rem;
+    padding: 4px;
+    font-size: 0.875rem;
     background: transparent;
+}
+
+@media (min-width: 640px) {
+    .table-input {
+        padding: 5px;
+        font-size: 1rem;
+    }
 }
 
 .table-input:focus {
@@ -125,7 +315,13 @@
 .amount-cell {
     font-weight: 600;
     text-align: right;
-    padding-right: 15px !important;
+    padding-right: 8px !important;
+}
+
+@media (min-width: 640px) {
+    .amount-cell {
+        padding-right: 15px !important;
+    }
 }
 
 .btn-add {
@@ -162,15 +358,33 @@
 /* Footer */
 .footer-section {
     display: flex;
-    justify-content: space-between;
-    margin-top: 40px;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
     border-top: 2px solid #333;
-    padding-top: 20px;
+    padding-top: 1rem;
+}
+
+@media (min-width: 640px) {
+    .footer-section {
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-top: 40px;
+        padding-top: 20px;
+    }
 }
 
 .bank-details {
-    width: 60%;
-    font-size: 0.9rem;
+    width: 100%;
+    font-size: 0.85rem;
+}
+
+@media (min-width: 640px) {
+    .bank-details {
+        width: 60%;
+        font-size: 0.9rem;
+    }
 }
 
 .bank-details h3 {
@@ -178,55 +392,118 @@
     border-bottom: 1px solid #eee;
     padding-bottom: 5px;
     margin-bottom: 10px;
+    font-size: 0.95rem;
+}
+
+@media (min-width: 640px) {
+    .bank-details h3 {
+        font-size: 1rem;
+    }
 }
 
 .bank-grid {
     display: grid;
-    grid-template-columns: 100px 1fr;
-    gap: 5px;
+    grid-template-columns: 90px 1fr;
+    gap: 4px;
+}
+
+@media (min-width: 640px) {
+    .bank-grid {
+        grid-template-columns: 100px 1fr;
+        gap: 5px;
+    }
 }
 
 .totals {
-    width: 35%;
+    width: 100%;
     text-align: right;
+}
+
+@media (min-width: 640px) {
+    .totals {
+        width: 35%;
+    }
 }
 
 .total-row {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 10px;
-    font-size: 1.1rem;
+    margin-bottom: 8px;
+    font-size: 1rem;
+}
+
+@media (min-width: 640px) {
+    .total-row {
+        margin-bottom: 10px;
+        font-size: 1.1rem;
+    }
 }
 
 .grand-total {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     font-weight: 800;
     color: #333;
     border-top: 1px solid #ddd;
     padding-top: 10px;
 }
 
+@media (min-width: 640px) {
+    .grand-total {
+        font-size: 1.4rem;
+    }
+}
+
 .qr-code-img {
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     margin-top: 10px;
     object-fit: cover;
 }
 
+@media (min-width: 640px) {
+    .qr-code-img {
+        width: 100px;
+        height: 100px;
+    }
+}
+
 /* Controls */
 .controls {
-    margin-bottom: 20px;
+    margin-bottom: 1rem;
     display: flex;
-    gap: 10px;
-    justify-content: flex-end;
+    gap: 8px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+@media (min-width: 640px) {
+    .controls {
+        margin-bottom: 20px;
+        gap: 10px;
+        justify-content: flex-end;
+    }
 }
 
 .btn {
-    padding: 10px 20px;
+    padding: 8px 16px;
     border-radius: 6px;
     border: none;
     font-weight: 600;
     transition: transform 0.1s;
+    font-size: 0.875rem;
+    flex: 1;
+    min-width: 120px;
+    max-width: 200px;
+}
+
+@media (min-width: 640px) {
+    .btn {
+        padding: 10px 20px;
+        font-size: 1rem;
+        flex: none;
+        min-width: auto;
+        max-width: none;
+    }
 }
 
 .btn:active {

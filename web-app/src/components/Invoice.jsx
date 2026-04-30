@@ -49,7 +49,7 @@ const Invoice = () => {
                 {/* Header */}
                 <header className="invoice-header">
                     <div className="logo-section">
-                        <img id="brand-logo" src={swadLogo} alt="Swad Logo" style={{ maxWidth: '150px', maxHeight: '100px', marginBottom: '10px', display: 'block' }} />
+                        <img id="brand-logo" src={swadLogo} alt="Swad Logo" className="brand-logo" />
 
                         <h1 className="brand-name">Swad Food Products</h1>
                         <p className="brand-address">
