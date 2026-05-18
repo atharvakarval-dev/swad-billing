@@ -8,10 +8,11 @@ const Invoice = () => {
     const [invoiceNo, setInvoiceNo] = useState('001');
     const [customerName, setCustomerName] = useState('');
     const [customerAddress, setCustomerAddress] = useState('');
-    const [items, setItems] = useState([{ id: 1, description: '', qty: 1, rate: 0 }]);
+    const [items, setItems] = useState([{ id: 1, description: '', weight: '', qty: 1, rate: 0 }]);
+    const [gstPercent, setGstPercent] = useState(0);
 
     const addItem = () => {
-        setItems([...items, { id: items.length + 1, description: '', qty: 1, rate: 0 }]);
+        setItems([...items, { id: items.length + 1, description: '', weight: '', qty: 1, rate: 0 }]);
     };
 
     const removeItem = (id) => {
@@ -28,9 +29,9 @@ const Invoice = () => {
         return (parseFloat(qty || 0) * parseFloat(rate || 0)).toFixed(2);
     };
 
-    const calculateTotal = () => {
-        return items.reduce((acc, item) => acc + (parseFloat(item.qty || 0) * parseFloat(item.rate || 0)), 0).toFixed(2);
-    };
+    const subtotal = items.reduce((acc, item) => acc + (parseFloat(item.qty || 0) * parseFloat(item.rate || 0)), 0);
+    const gstAmount = (subtotal * parseFloat(gstPercent || 0)) / 100;
+    const grandTotal = subtotal + gstAmount;
 
     const handlePrint = () => {
         window.print();
@@ -112,6 +113,7 @@ const Invoice = () => {
                             <tr>
                                 <th style={{ width: '50px' }}>Sr.</th>
                                 <th>Description of Goods</th>
+                                <th style={{ width: '80px' }}>Weight</th>
                                 <th style={{ width: '80px' }}>Qty</th>
                                 <th style={{ width: '100px' }}>Rate</th>
                                 <th style={{ width: '120px' }}>Amount</th>
@@ -129,6 +131,15 @@ const Invoice = () => {
                                             value={item.description}
                                             onChange={(e) => updateItem(item.id, 'description', e.target.value)}
                                             placeholder="Item Name"
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            className="table-input"
+                                            value={item.weight}
+                                            onChange={(e) => updateItem(item.id, 'weight', e.target.value)}
+                                            placeholder="Weight"
                                         />
                                     </td>
                                     <td>
@@ -179,12 +190,25 @@ const Invoice = () => {
 
                     <div className="totals">
                         <div className="total-row">
-                            <span>Total:</span>
-                            <span>₹ {calculateTotal()}</span>
+                            <span>Subtotal:</span>
+                            <span>₹ {subtotal.toFixed(2)}</span>
+                        </div>
+                        <div className="total-row gst-row">
+                            <span className="gst-label-wrapper">
+                                GST (%): 
+                                <input 
+                                    type="number"
+                                    className="gst-input"
+                                    value={gstPercent}
+                                    onChange={(e) => setGstPercent(e.target.value)}
+                                    placeholder="0"
+                                />
+                            </span>
+                            <span>₹ {gstAmount.toFixed(2)}</span>
                         </div>
                         <div className="total-row grand-total">
                             <span>Grand Total:</span>
-                            <span>₹ {calculateTotal()}</span>
+                            <span>₹ {grandTotal.toFixed(2)}</span>
                         </div>
                         <div className="signature-area">
                             <br /><br /><br />
