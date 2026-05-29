@@ -56,7 +56,8 @@ const Invoice = () => {
                         <p className="brand-address">
                             Acharya society, near Pariwar mart,<br />
                             Ambedkar chowk, old Jakat naka,<br />
-                            warje, Pune 52
+                            warje, Pune 52<br />
+                            <strong>GSTIN:</strong> 27ARNPK6123G2ZO
                         </p>
                     </div>
                     <div className="invoice-title">
